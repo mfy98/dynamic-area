@@ -1,0 +1,83 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./cdk-drag-drop-overview-example/cdk-drag-drop-overview-example.component.css">
+
+<main class="main">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="example-box2" id="2" cdkDrag>
+   
+        <div class="example-handle" cdkDragHandle cdkDragBoundary>
+          <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </div>
+          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[svgFilesList]" class="example-list2" id="dort" (cdkDropListDropped)="drop($event)">
+    @for (item of done; track item) {
+      <div class="example-box" cdkDrag><a href="#"><img [src]="getImagePath(item)"/></a></div>
+    }
+  </div>
+          
+      </div>
+      <div class="example-container">
+      
+        <div
+          cdkDropList
+          #svgFilesList="cdkDropList"
+          [cdkDropListData]="svgFiles"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of svgFiles; track item) {
+            <div class="example-box" cdkDrag><a href="#"><img [src]="getImagePath(item)"/></a></div>
+          }
+          <mat-card class="example-card" cdkDrag style="background: white;">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Shiba Inu</mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+
+        
+    </div>
+    
+</div>
+
+
+
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />
